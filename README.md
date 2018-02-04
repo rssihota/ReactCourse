@@ -1,1 +1,3 @@
 # ReactCourse
+
+live-server public
