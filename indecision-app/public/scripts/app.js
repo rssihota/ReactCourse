@@ -1,48 +1,74 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log("App.js is running");
 
-var add = function add(a, b) {
-    //console.log(arguments);
-    return a + b;
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 };
 
-console.log(add(55, 1, 1001));
+// JSX - JavaScript XML
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
+    )
+);
 
-// this keyword - no longer bound with arrow functions
-
-var user = {
-    name: 'Ranbir',
-    cities: ['Toronto', 'Victoria', 'Guelph'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' has lived in ' + city);
-        // });
-    }
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
 };
-
-console.log(user.printPlacesLived());
-
-// Challenge area
-
-var multiplier = {
-    // numbers - array of numbers
-    // multiplyBy - single number
-    // multiply - return a new array where the number have been multiplied
-    numbers: [1, 2, 3],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
+var minusOne = function minusOne() {
+    console.log('minusOne');
 };
+var reset = function reset() {
+    console.log('reset');
+};
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
+);
 
-console.log(multiplier.multiply());
+// Challenge
+// Make button "-1" - setup minusOne function and register - log "minusOne"
+// Make reset button "reset" - setup reset unction - log "reset"
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
