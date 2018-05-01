@@ -1,0 +1,4 @@
+/package-lock.json
+/indecision-app/yarn.lock
+/indecision-app/node_modules/*
+/yarn-error.log
